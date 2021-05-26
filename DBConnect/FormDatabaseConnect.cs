@@ -40,6 +40,8 @@ namespace DBConnect
 
             MySqlDataReader carReader = carDB.GetCars(this.db);
 
+            string carRecordsMessage = "The cars currently in the database are:\n\n";
+
             while (carReader.Read())
             {
                 string reg = carReader.GetString(0);
@@ -55,10 +57,12 @@ namespace DBConnect
                     availableText = "No";
                 }
 
-                string rowDataText = string.Format("Registration: {0},  Manufacturer: {1}, Engine Size: {2}, Date Registered: {3:MM/dd/yyyy}, Rental Per Day: €{4:n2}, Available: {5}",
+                
+                carRecordsMessage += string.Format("Registration: {0},  Manufacturer: {1}, Engine Size: {2}, Date Registered: {3:MM/dd/yyyy}, Rental Per Day: €{4:n2}, Available: {5}\n",
                                                reg, manufacturer, engineSize, dateRegistered, rentalPerDay, availableText);
-                MessageBox.Show(rowDataText);
             }
+
+            MessageBox.Show(carRecordsMessage);
 
             carReader.Close();
         }

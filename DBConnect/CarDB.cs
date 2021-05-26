@@ -11,7 +11,7 @@ namespace DBConnect
     {
         public MySqlDataReader GetCars(DBConnection db)
         {
-            string sql = "SELECT * FROM car";
+            string sql = "SELECT * FROM car;";
             using var cmd = new MySqlCommand(sql, db.Connection);
 
             MySqlDataReader rdr = cmd.ExecuteReader();
